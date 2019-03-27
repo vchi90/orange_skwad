@@ -12,4 +12,5 @@ Our plan is to use these word counts to make a wordmap and create an interaction
 There are several iconic "Trump" phrases, but what does he really say? 
 When the words displayed on the wordmap are clicked, a new wordmap will be generated and the new words will be sized according to the probability of appearing after the clicked word. i.e If the user clicks on "big", the largest word in the new wordmap might be "wall". By allowing users to take their own path, they can explore their own questions about Donald Trump's speech like the expanse of his vocabulary. Perhaps, the users can create their own sentences trying to mimick Trump.
 ## D3 Feature Utilization
+Our project will have similarity to the [Word Cloud](https://www.jasondavies.com/wordcloud/) example in the gallery as we will be building a similar wordmap using Trump's tweets, using the same idea of utilizing word count to determine the size of each word in the map. 
 ## Sketch-up of Envisioned Visualization
