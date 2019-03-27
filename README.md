@@ -17,3 +17,5 @@ Our project will have similarity to the [Word Cloud](https://www.jasondavies.com
 D3 has a [word cloud data structure](http://bl.ocks.org/joews/9697914) which we can use and manipulate to display the word cloud. We can edit the font, size, color of words. We can also directly access the svg elements for each word, so we can add event listeners "on click" to update the word cloud.
 
 ## Sketch-up of Envisioned Visualization
+
+<img src="sketch.png">
