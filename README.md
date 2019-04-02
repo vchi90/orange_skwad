@@ -19,3 +19,26 @@ D3 has a [word cloud data structure](http://bl.ocks.org/joews/9697914) which we 
 ## Sketch-up of Envisioned Visualization
 
 <img src="sketch.png">
+
+## Launch Code
+1. Clone Repo:
+    ```
+    $ git clone https://github.com/vchi90/orange_skwad.git
+    ```
+    
+2. Create and activate your virtual environment in the terminal.
+    ```
+    $ python3 -m venv <<placeholder>>
+    $ . <<PATH_TO_VENV>>/bin/activate
+    ```
+
+4. Install the dependencies with [requirements.txt](requirements.txt) by running the following command  
+    ```
+    pip install -r requirements.txt
+    ```
+    
+5. Go into the repo (```cd orange_sqwad```) and run the python file by typing ```$ python app.py``` in the terminal.
+
+6. Open your web browser and open localhost:5000
+
+To terminate (in terminal), CTRL + C. To exit virtual environment, deactivate.
