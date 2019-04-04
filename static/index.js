@@ -69,8 +69,10 @@ show(); //For some reason, calling it twice is needed because the rotations aren
 
 //======================================DONUT CHART=================SHOULD PROBABLY BE IN ANOTHER FILE
 
-var width = 260;
-var height = 260;
+var width = 250;
+var height = 250;
+var svgwidth = 300;
+var svgheight = 300;
 var thickness = 40;
 var duration = 750;
 
@@ -80,10 +82,10 @@ var color = d3.scaleOrdinal(d3.schemeCategory10);
 var svg1 = d3.select(".svgcontainer2")
     .append('svg')
     .attr('class', 'pie')
-    .attr('width', width)
-    .attr('height', height)
+    .attr('width', svgwidth)
+    .attr('height', svgheight)
     .append('g')
-    .attr('transform', 'translate(' + (width/2) + ',' + (height/2) + ')'); //Moving the chart from top left of container to the center
+    .attr('transform', 'translate(' + (svgwidth/2) + ',' + (svgheight/2) + ')'); //Moving the chart from top left of container to the center
 
 //Function to get/display a section of the arc for later
 var arc = d3.arc()
@@ -105,12 +107,26 @@ svg1.selectAll('path')
             .attr("class", "name-text")
             .text(d.data.text)
             .attr('text-anchor', 'middle')
+	
     })
     .on("mouseout", function(d) {
         d3.select(this)
-        .select(".text-group").remove(); //Delete the entire text group made above ^^^
+            .select(".text-group").remove(); //Delete the entire text group made above ^^^
     })
     .append('path')
     .attr('d', arc) //The arc
     .attr('fill', (d,i) => color(i))
-    ;
+    .on("mouseover", function(d) {
+	d3.select(this)
+	    .transition()
+	    .duration(200)
+	    .ease(d3.easeBounce)
+	    .attr('d', d3.arc().innerRadius(radius-thickness).outerRadius(radius+4));
+    })
+    .on("mouseout", function(d) {
+		d3.select(this)
+	    .transition()
+	    .duration(200)
+	    .ease(d3.easeBounce)
+	    .attr('d', d3.arc().innerRadius(radius-thickness).outerRadius(radius));
+    });
