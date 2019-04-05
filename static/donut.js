@@ -1,7 +1,7 @@
 var width = 300;
 var height = 300;
-var svgwidth = 300;
-var svgheight = 300;
+var svgwidth = 400;
+var svgheight = 400;
 var thickness = 40;
 var duration = 750;
 
@@ -32,11 +32,17 @@ var drawDonut = function(words) {
         .append("g")
         .on("mouseover", function(d) {
             //console.log("wepy")
-            d3.select(this).append("g").attr("class","text-group") //Each element of the donut chart create a next "textgroup" for accessibility
-                .append("text")
+            let g = d3.select(this).append("g").attr("class","text-group") //Each element of the donut chart create a next "textgroup" for accessibility
+
+	    g.append("text")
                 .attr("class", "name-text")
                 .text(d.data.text)
-                .attr('text-anchor', 'middle');
+                .attr('text-anchor', 'middle')
+	    g.append("text")
+		.attr("class","name-text")
+		.text(d.data.pct)
+		.attr("text-anchor","middle")
+		.attr("y",20);
 
         })
         .on("mouseout", function(d) {
