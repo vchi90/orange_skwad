@@ -1,5 +1,5 @@
-var width = 250;
-var height = 250;
+var width = 300;
+var height = 300;
 var svgwidth = 300;
 var svgheight = 300;
 var thickness = 40;
@@ -24,7 +24,7 @@ var drawDonut = function(words) {
         .outerRadius(radius);
 
     var pie = d3.pie()
-        .value(function(d) { return 10; }); //For now, assign a random value to the elements (the portion of the whole pie it takes up)
+        .value(function(d) { return d.size1; });
 
     var donutPath = svg1.selectAll('path')
         .data(pie(words)) //Enter the data
@@ -46,7 +46,9 @@ var drawDonut = function(words) {
         .append('path')
 
     donutPath.attr('d', arc) //The arc
-        .attr('fill', (d,i) => color(i))
+        .attr('fill', function(d,i) {
+            return d.data.color
+        })
         .on("mouseover", function(d) {
 	        d3.select(this)
                 .transition()
@@ -67,4 +69,3 @@ var updateDonut = function(newWords) {
     d3.select('.svgcontainer2').select('svg').remove(); //Delete the old chart
     drawDonut(newWords); //Draw the new chart
 }
-drawDonut(getWords(0));

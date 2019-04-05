@@ -1,16 +1,12 @@
-//Function to color the words
-var fill = d3.scaleOrdinal(d3.schemeCategory10);
-
-//Sample words
-var words = ["You don't know about me without you have read a book called The Adventures of Tom Sawyer but that ain't no matter.",
-    "Wot the new mop like key hop yup"];
+var cloudwidth = 750;
+var cloudheight = 750;
 
 //Create the svg element
 var svg0 = d3.select('.svgcontainer').append('svg').
-    attr("width",500).
-    attr("height", 500).
+    attr("width",cloudwidth).
+    attr("height", cloudheight).
     append("g")
-    .attr("transform","translate(250,250)"); //The cloud initially is centered at 0,0 top left, but we want to center on canvas
+    .attr("transform",`translate(${cloudwidth/2},${cloudwidth/2})`); //The cloud initially is centered at 0,0 top left, but we want to center on canvas
 
 function draw(wordlist) {
     var cloud = svg0.selectAll("g text").
@@ -19,13 +15,13 @@ function draw(wordlist) {
     //Format how the words look
         .append("text")
         .style("font-family", "Impact")
-        .style("fill", function(d, i) { return fill(i); })
+        .style("fill", function(d, i) { return d.color; })
         .attr("text-anchor", "middle")
         .attr('font-size', function(d) { return d.size; })
 	    .text(function(d) { return d.text; })
         //Event listener for the individual svg elements of the words
         .on("click", function(d) {
-	        show();
+	        show(getWords(d.text)); //Call the show again, but with the new words
         });
 
     //Have a transition for when the cloud is redrawn/reloaded
@@ -43,27 +39,23 @@ function draw(wordlist) {
         .remove();
 }
 
-function getWords(i) {
-    return words[i]
-            .replace(/[!\.,:;\?]/g, '')
-            .split(' ')
-            .map(function(d) {
-                return {text: d, size: 10 + Math.random() * 60};
-            })
-}
+var show = function(words) {
 
-var show = function() {
-
-    d3.layout.cloud().size([500, 500])
-                .words(words1)
+    //Draw the cloud
+    d3.layout.cloud().size([750, 750])
+                .words(words)
                 .padding(5)
                 .rotate(function() { return Math.floor(Math.random() * 2) * 90; })
                 .font("Impact")
                 .fontSize(function(d) { return d.size; })
                 .on("end", draw)
                 .start();
-    draw(words1)
+    draw(words);
+
+    //Draw the donut
+    updateDonut(words);
+
 }
 
-var words1 = getWords(0)
-show();
+var startingWords = getWords('america')
+show(startingWords);
