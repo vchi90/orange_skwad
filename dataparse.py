@@ -2,10 +2,10 @@ import json
 word = {}
 with open("data.csv","r")as f:
     for l in f.read().lower().split("\n"):
-        
+
         w=[w for w in" ".join(w for w in l.split(" ") if w and "http" not in w and "www" not in w).replace("."," ").replace("“"," ").replace(":"," ").replace("?"," ").replace(","," ").replace(";"," ").replace("\""," ").replace("…"," ").replace("!"," ").replace("—"," ").replace("-"," ").replace("”"," ").replace("&amp","and").replace("’","'").replace("‘","'").replace("("," ").replace(")"," ").split(" ")if w]
         for i in range(len(w)):
-            
+
             while "\\u" in w[i]:
                 w[i]=w[i][:w[i].find("\\u")]+" "+w[i][w[i].find("\\u")+6:]
                 print(w[i])
@@ -22,5 +22,5 @@ with open("data.csv","r")as f:
                     word[w[i]][w[(i+1)%len(w)]]=1
             else:
                 word[w[i]]={w[(i+1)%len(w)]:1}
-with open("static/data.json","w") as f:
-    f.write(json.dumps(word))
+with open("static/data.js","w") as f:
+    f.write("var words = " + json.dumps(word))
