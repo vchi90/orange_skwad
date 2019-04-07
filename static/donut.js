@@ -49,6 +49,9 @@ var drawDonut = function(words) {
             d3.select(this)
                 .select(".text-group").remove(); //Delete the entire text group made above ^^^
         })
+	.on("click", function(d) {
+	    show(getWords(d.data.text));
+	})
         .append('path')
 
     donutPath.attr('d', arc) //The arc

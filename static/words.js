@@ -10,9 +10,11 @@ function getWords(base) {
     let total = 0;
 
     //Limit the number of words to 20
-    if (keys.length > 20) {
-        random(keys);
-        keys = keys.slice(0,20);
+    if (keys.length > 40) {
+        keys.sort(function(x,y) {
+	    return all[y]-all[x];
+	});
+        keys = keys.slice(0,40);
     }
 
     //Total count of words
@@ -33,6 +35,30 @@ function getWords(base) {
     })
 
     return lst;
+}
+
+var mostPopular = function(allwords) {
+    let words = Object.keys(allwords);
+    words.sort(function(x,y) {
+	let count1 = 0;
+	let wordsinwords = Object.keys(x)
+	for (let i = 0; i < wordsinwords.length; i++) {
+	    count1 += x[wordsinwords[i]]
+	}
+
+	let count2 = 0;
+	let wordsinwords2 = Object.keys(y)
+	for (let i = 0; i < wordsinwords2.length; i++) {
+	    count2 += y[wordsinwords2[i]]
+	}
+
+	return -1*count2+count1;
+	
+
+	
+    })
+    return words.slice(0,10)
+
 }
 
 //Scramble an array

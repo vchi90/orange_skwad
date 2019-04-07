@@ -14,11 +14,11 @@ function draw(wordlist) {
     cloud.enter()
     //Format how the words look
         .append("text")
-        .style("font-family", "Impact")
+        .style("font-family", "Comic Sans MS")
         .style("fill", function(d, i) { return d.color; })
         .attr("text-anchor", "middle")
         .attr('font-size', function(d) { return d.size; })
-	    .text(function(d) { return d.text; })
+	.text(function(d) { return d.text; })
         //Event listener for the individual svg elements of the words
         .on("click", function(d) {
 	        show(getWords(d.text)); //Call the show again, but with the new words
@@ -57,5 +57,5 @@ var show = function(words) {
 
 }
 
-var startingWords = getWords('america')
+var startingWords = getWords('national')
 show(startingWords);
