@@ -9,3 +9,7 @@
 #ring{
   padding-top:30%
 }
+
+p:first-letter {
+    text-transform:capitalize;
+}

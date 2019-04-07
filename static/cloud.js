@@ -40,6 +40,11 @@ function draw(wordlist) {
 }
 
 var show = function(prompt) {
+    //Add to the chain of words shown
+    let chain = document.getElementById("chain");
+    let p = chain.children[0];
+    p.innerHTML += ` ${capitalize(prompt)} <i class="fas fa-arrow-right"></i>`;
+
     d3.json('/static/data.json').then(function(data) {
         let words = getWords(data,prompt)
         //Draw the cloud
@@ -58,4 +63,14 @@ var show = function(prompt) {
     })
 }
 
+function capitalize(str)
+{
+    str = str.split(" ");
+
+    for (var i = 0, x = str.length; i < x; i++) {
+        str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+    }
+
+    return str.join(" ");
+}
 show('america');
