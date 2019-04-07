@@ -1,29 +1,45 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<head>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
-  <div class="container center">
-    <h1>Trump Tweets</h1>
-    <div class="jumbotron jumbotron-fluid" id="jumbosize">
-      <div id="chain">
-        <p class="lead"></p>
-      </div>
-      <div class="row">
-        <div class="col-md-7">
-          <div class="svgcontainer">
+<html>
+  <head>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+	<div class="container center">
+      <h1>Trump Tweets</h1>
+      <div class="jumbotron jumbotron-fluid" id="jumbosize">
+		<div id="chain">
+          <span class="lead" style="font-size:18px;"></span>
+		  <span class="tail" style="font-size:18px;"></span>
+		</div>
+		<div class="row">
+          <div class="col-md-7">
+			<div class="svgcontainer">
+			</div>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="svgcontainer2" id="ring">
+          <div class="col-md-4">
+			<div class="svgcontainer2" id="ring">
+			</div>
           </div>
-        </div>
+		</div>
+		<div class="row justify-content-md-center">
+		  <div class="col-md-auto">
+			<svg width="500" height="60">
+			  <foreignObject x="25" y="0" width="450" height="60" id="form">
+				<div class="input-group mb-3">
+				  <input type="text" class="form-control" placeholder="Search for a word" id="search">
+				  <div class="input-group-append">
+					<button class="btn btn-info" type="button" id="searchgo">Go!</button>
+				  </div>
+				</div>
+			  </foreignObject>
+			</svg>
+		  </div>
+		</div>
       </div>
-    </div>
-      <span class="text-muted">Source for Trump's twitter data <a href="http://www.trumptwitterarchive.com/">Trump Twitter Archive</a></span>
+	  <span class="text-muted">Source for Trump's twitter data <a href="http://www.trumptwitterarchive.com/">Trump Twitter Archive</a></span>
     </div>
     <script src="http://d3js.org/d3.v5.min.js"></script>
     <script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script>
@@ -32,3 +48,4 @@
     <script src="/static/cloud.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
+</html>

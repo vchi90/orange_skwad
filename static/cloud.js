@@ -1,12 +1,12 @@
 var cloudwidth = 750;
-var cloudheight = 750;
+var cloudheight = 525;
 
 //Create the svg element
 var svg0 = d3.select('.svgcontainer').append('svg')
     .attr("width",cloudwidth)
     .attr("height", cloudheight)
     .append("g")
-    .attr("transform",`translate(${cloudwidth/2},${cloudwidth/2})`); //The cloud initially is centered at 0,0 top left, but we want to center on canvas
+    .attr("transform",`translate(${cloudwidth/2},${cloudheight/2})`); //The cloud initially is centered at 0,0 top left, but we want to center on canvas
 
 function draw(wordlist) {
     var cloud = svg0.selectAll("g text").
@@ -43,12 +43,14 @@ var show = function(prompt) {
     //Add to the chain of words shown
     let chain = document.getElementById("chain");
     let p = chain.children[0];
-    p.innerHTML += ` ${capitalize(prompt)} <i class="fas fa-arrow-right"></i>`;
+	let t = chain.children[1];
+	p.innerHTML += t.innerHTML.length>0 ? t.innerHTML + ` <i class="fas fa-arrow-right"></i> ` : t.innerHTML;
+    t.innerHTML = `${capitalize(prompt)}`;
 
     d3.json('/static/data.json').then(function(data) {
         let words = getWords(data,prompt)
         //Draw the cloud
-        d3.layout.cloud().size([750, 750])
+        d3.layout.cloud().size([cloudwidth, cloudheight])
                 .words(words)
                 .padding(5)
                 .rotate(function() { return Math.floor(Math.random() * 2) * 90; })
@@ -74,3 +76,36 @@ function capitalize(str)
     return str.join(" ");
 }
 show('america');
+
+document.getElementById("searchgo").addEventListener("click", ()=>{
+	src = document.getElementById("search");
+	txt = src.value;
+	d3.json('/static/data.json').then(function(data) {
+		if(txt in data){
+			let p = chain.children[0];
+			let t = chain.children[1];
+			p.innerHTML = "";
+			t.innerHTML = "";
+			show(txt);
+		}else
+			shaek();
+	});
+});
+
+var shaek = ()=>{
+	console.log("shake")
+	let frames =0;
+	let c = document.getElementById("form");
+	let vel=6;
+	var shake = ()=>{
+		if(frames<27)
+			id=window.requestAnimationFrame(shake);
+		else
+			c.setAttribute("x",25);
+		c.setAttribute("x",+c.getAttribute("x")+vel);
+		vel-=(+c.getAttribute("x")-25)*.5;
+		frames++;
+		console.log(frames + ": " + c.getAttribute("x"));
+	};
+	shake();
+};

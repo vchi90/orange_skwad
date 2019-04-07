@@ -36,6 +36,11 @@ Finished other parts of the README.md
 
 ==============================================================
 
+petersT -- 8:10 2019-04-02
+--------------------------------------------------------------
+parsed trump twitter archive into markov chainable bits
+==============================================================
+
 vincentC 8:45 2019-04-02
 --------------------------------------------------------------
 Launch code addition in README.md
@@ -62,6 +67,19 @@ Added basic formatting to index html
 
 ==============================================================
 
+petersT 13:22 2019-04-04
+--------------------------------------------------------------
+refactored le dataparsing to contain NESTED DICTIONARIES WOO for size determined by use
+
+==============================================================
+
+petersT 18:50 2019-04-04
+--------------------------------------------------------------
+killed unicode characters (rip)
+
+==============================================================
+
+
 jiayangC 20:00 2019-04-04
 --------------------------------------------------------------
 Started integrating THEODORES COOL PARSED DATA
@@ -69,8 +87,29 @@ Refactored donut code to its own file
 
 ==============================================================
 
+theodorePeters 13:16 2019-04-05
+--------------------------------------------------------------
+apostrophees and parenthesize also getted killed except when
+uuused reasonalby in contractions...
+thank you scientist announced their 3rd album epic
+
+==============================================================
+
+
 rayO 22:41 2019-04-06
 --------------------------------------------------------------
 Added hardcoded word chain
 Put charts side to side and aligned
 ==============================================================
+
+petersT 18:16 2019-04-07
+--------------------------------------------------------------
+last word has become red
+word cloud has become smaller so no more scroll bar
+search bar has become existing
+search bar will become ANGERY and TRASH AROUND VIOLENTLY if some MORONIC user enters IDIOTIC search terms ( very proud of this one)
+i think i also fixed a few BUGS
+RETROCACTIVELY MODIFIED DEVLOG SO MR. TOPHER BROWN MYKOLYK WOULDN"T THINK I DIDN"T CONTRIBUTE ANYTHING TO THE PROJECT AND FAIL ME OUT OF THIS COURSE AND THEN I"D HAVE TO GO TO SUMMER SCHOOL WITH BENSON GOLDMAN AND HE WOULD CONSTANTLY COME UP TO ME TO MAKE UNINSIGNTFUL COMMENTS LIKE "WHEN THEODORE PETERS LEAVES A ROOM THE ODOR PETERS OUT" VERY COOL BENSON THANKS AND THEN I"D GET RESCINDED FROM COLLEGE AND HAVE TO SNEAK INTO BMCC TO TAKE COLLEGE COURSES so good thing that won't happen now...
+
+==============================================================
+

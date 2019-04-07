@@ -12,8 +12,8 @@ function getWords(words,base) {
     //Limit the number of words to 20
     if (keys.length > 40) {
         keys.sort(function(x,y) {
-	    return all[y]-all[x];
-	});
+			return all[y]-all[x];
+		});
         keys = keys.slice(0,40);
     }
 
@@ -28,11 +28,11 @@ function getWords(words,base) {
         let size = Math.pow(all[key] / total,.25) * 75; //Scale according to size, "curve" the data so less common words aren't tiny
         let size1 = Math.pow(all[key] / total,.40) * 100 //Scale for the donut chart
         let color = i;
-	let pct = "" + ((all[key] / total)*100);
-	pct = pct.substring(0,3).replace(/^\.+|\.+$/g, '') + '%';
+		let pct = "" + ((all[key] / total)*100);
+		pct = pct.substring(0,3).replace(/^\.+|\.+$/g, '') + '%';
         i+=1;
         lst.push({text:key, size:size, size1: size1, color: fill(color), pct:pct})
-    })
+    });
 
     return lst;
 }

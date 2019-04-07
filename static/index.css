@@ -3,13 +3,27 @@
     src:url("/static/Not_Comic_Sans.ttf");
 }
 .center {
-  text-align:center;
+	text-align:center;
 }
-
+.tail {
+	color:#A30000;
+}
 #ring{
-  padding-top:30%
+	padding-top:30%;
 }
 
-p:first-letter {
+span: first-letter {
     text-transform:capitalize;
+}
+span: {
+	font-size: 18px;
+}
+
+label, input, button {
+	font-size: 1em;
+	padding: 0.2em;
+	margin: 0.1em 0.2em;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
 }
