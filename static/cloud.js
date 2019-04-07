@@ -2,10 +2,10 @@ var cloudwidth = 750;
 var cloudheight = 750;
 
 //Create the svg element
-var svg0 = d3.select('.svgcontainer').append('svg').
-    attr("width",cloudwidth).
-    attr("height", cloudheight).
-    append("g")
+var svg0 = d3.select('.svgcontainer').append('svg')
+    .attr("width",cloudwidth)
+    .attr("height", cloudheight)
+    .append("g")
     .attr("transform",`translate(${cloudwidth/2},${cloudwidth/2})`); //The cloud initially is centered at 0,0 top left, but we want to center on canvas
 
 function draw(wordlist) {
@@ -21,7 +21,7 @@ function draw(wordlist) {
 	.text(function(d) { return d.text; })
         //Event listener for the individual svg elements of the words
         .on("click", function(d) {
-	        show(getWords(d.text)); //Call the show again, but with the new words
+	        show(d.text); //Call the show again, but with the new words
         });
 
     //Have a transition for when the cloud is redrawn/reloaded
@@ -39,10 +39,11 @@ function draw(wordlist) {
         .remove();
 }
 
-var show = function(words) {
-
-    //Draw the cloud
-    d3.layout.cloud().size([750, 750])
+var show = function(prompt) {
+    d3.json('/static/data.json').then(function(data) {
+        let words = getWords(data,prompt)
+        //Draw the cloud
+        d3.layout.cloud().size([750, 750])
                 .words(words)
                 .padding(5)
                 .rotate(function() { return Math.floor(Math.random() * 2) * 90; })
@@ -50,12 +51,11 @@ var show = function(words) {
                 .fontSize(function(d) { return d.size; })
                 .on("end", draw)
                 .start();
-    draw(words);
+        draw(words);
 
-    //Draw the donut
-    updateDonut(words);
-
+        //Draw the donut
+        updateDonut(words);
+    })
 }
 
-var startingWords = getWords('national')
-show(startingWords);
+show('america');

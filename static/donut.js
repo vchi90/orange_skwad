@@ -1,7 +1,7 @@
 var width = 300;
 var height = 300;
-var svgwidth = 400;
-var svgheight = 400;
+var svgwidth = 350;
+var svgheight = 350;
 var thickness = 40;
 var duration = 750;
 
@@ -50,7 +50,7 @@ var drawDonut = function(words) {
                 .select(".text-group").remove(); //Delete the entire text group made above ^^^
         })
 	.on("click", function(d) {
-	    show(getWords(d.data.text));
+	    show(d.data.text);
 	})
         .append('path')
 

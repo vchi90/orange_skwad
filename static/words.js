@@ -3,7 +3,7 @@ var fill = d3.scaleOrdinal(d3.schemeCategory10);
 
 
 //Get and format the words that come after a word
-function getWords(base) {
+function getWords(words,base) {
     let all = words[base];
     let keys = Object.keys(all);
     let lst = [];
@@ -53,9 +53,9 @@ var mostPopular = function(allwords) {
 	}
 
 	return -1*count2+count1;
-	
 
-	
+
+
     })
     return words.slice(0,10)
 
