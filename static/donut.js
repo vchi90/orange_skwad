@@ -62,7 +62,7 @@ var drawDonut = function(words) {
 	        return i * 25; }
         )
         .duration(25)
-        .attrTween('d', function(d) {
+        .attrTween('d', function(d) { //The attribute while it is being animated
 		    var i = d3.interpolate(d.startAngle, d.endAngle);
 		    return function(t) {
 			    d.endAngle = i(t);
