@@ -125,3 +125,9 @@ press enter: the cool kids are all doing it
 colors less oogoly
 also search bar will never get so angery it flies off the screen anymore
 ==============================================================
+
+jiayangC 18:15 2019-04-08
+--------------------------------------------------------------
+Fixed the bug where a word's color would not change in the word cloud
+Added transitioning with the donut
+==============================================================
