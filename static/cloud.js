@@ -77,7 +77,7 @@ function capitalize(str)
 }
 show('america');
 
-document.getElementById("searchgo").addEventListener("click", ()=>{
+var searchog = ()=>{
 	src = document.getElementById("search");
 	txt = src.value;
 	d3.json('/static/data.json').then(function(data) {
@@ -90,6 +90,13 @@ document.getElementById("searchgo").addEventListener("click", ()=>{
 		}else
 			shaek();
 	});
+};
+
+document.getElementById("searchgo").addEventListener("click", searchog);
+document.getElementById("search").addEventListener("keypress", (e)=>{
+//	console.log(e);
+	if(e.key==="Enter")
+		searchog();
 });
 
 var shaek = ()=>{
