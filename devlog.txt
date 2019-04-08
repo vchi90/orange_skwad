@@ -113,3 +113,7 @@ RETROCACTIVELY MODIFIED DEVLOG SO MR. TOPHER BROWN MYKOLYK WOULDN"T THINK I DIDN
 
 ==============================================================
 
+rayO 12:47 2019-04-08
+--------------------------------------------------------------
+Fixed issue with charts overlapping
+==============================================================
