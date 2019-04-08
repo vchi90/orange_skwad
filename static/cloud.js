@@ -80,7 +80,7 @@ show('america');
 
 var searchog = ()=>{
 	src = document.getElementById("search");
-	txt = src.value;
+	txt = src.value.toLowerCase();
 	d3.json('/static/data.json').then(function(data) {
 		if(txt in data){
 			let p = chain.children[0];
@@ -99,7 +99,7 @@ document.getElementById("search").addEventListener("keypress", (e)=>{
 	if(e.key==="Enter")
 		searchog();
 });
-
+var id=0;
 var shaek = ()=>{
 	console.log("shake")
 	let frames =0;
@@ -115,5 +115,7 @@ var shaek = ()=>{
 		frames++;
 		console.log(frames + ": " + c.getAttribute("x"));
 	};
+	window.cancelAnimationFrame(id);
+	c.setAttribute("x",25);
 	shake();
 };
