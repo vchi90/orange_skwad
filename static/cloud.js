@@ -15,8 +15,8 @@ function draw(wordlist) {
     //Format how the words look
         .append("text")
         .style("font-family", "Comic Sans MS")
-        .style("fill", function(d, i) { return d.color; })
         .attr("text-anchor", "middle")
+        .style("fill", function(d, i) { return d.color; })
         .attr('font-size', function(d) { return d.size; })
 	.text(function(d) { return d.text; })
         //Event listener for the individual svg elements of the words
@@ -28,6 +28,7 @@ function draw(wordlist) {
     cloud.transition()
         .duration(600)
         .style("font-size", function(d) { return d.size + "px"; })
+        .style("fill", function(d, i) { return d.color; })
         .attr("transform", function(d) {
             return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
         })
