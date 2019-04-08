@@ -1,7 +1,6 @@
 //Function to color the words
 var fill = d3.scaleOrdinal(d3.schemeCategory10);
 
-
 //Get and format the words that come after a word
 function getWords(words,base) {
     let all = words[base];
@@ -25,11 +24,12 @@ function getWords(words,base) {
     let i = 0; //For the colors
     //Create a list of objects (because d3 cloud takes in a list of objs)
     keys.forEach(function(key) {
-        let size = Math.pow(all[key] / total,.25) * 75; //Scale according to size, "curve" the data so less common words aren't tiny
+	let scale = d3.scalePow().exponent(.75).domain([0,1]).range([25,75]);
+        let size = scale(all[key] / total); //Scale according to size, "curve" the data so less common words aren't tiny
         let size1 = Math.pow(all[key] / total,1) * 100 //Scale for the donut chart
         let color = i;
-		let pct = "" + ((all[key] / total)*100);
-		pct = pct.substring(0,3).replace(/^\.+|\.+$/g, '') + '%';
+	let pct = "" + ((all[key] / total)*100);
+	pct = pct.substring(0,3).replace(/^\.+|\.+$/g, '') + '%';
         i+=1;
         lst.push({text:key, size:size, size1: size1, color: fill(color), pct:pct})
     });
