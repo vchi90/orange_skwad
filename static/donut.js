@@ -33,31 +33,42 @@ var drawDonut = function(words) {
         .on("mouseover", function(d) {
             //console.log("wepy")
             let g = d3.select(this).append("g").attr("class","text-group") //Each element of the donut chart create a next "textgroup" for accessibility
-
-	    g.append("text")
+            g.append("text")
                 .attr("class", "name-text")
                 .text(d.data.text)
                 .attr('text-anchor', 'middle')
-	    g.append("text")
-		.attr("class","name-text")
-		.text(d.data.pct)
-		.attr("text-anchor","middle")
-		.attr("y",20);
+	        g.append("text")
+		        .attr("class","name-text")
+		        .text(d.data.pct)
+		        .attr("text-anchor","middle")
+		        .attr("y",20);
 
         })
         .on("mouseout", function(d) {
             d3.select(this)
                 .select(".text-group").remove(); //Delete the entire text group made above ^^^
         })
-	.on("click", function(d) {
-	    show(d.data.text);
-	})
+	    .on("click", function(d) {
+	           show(d.data.text);
+	    })
         .append('path')
 
-    donutPath.attr('d', arc) //The arc
-        .attr('fill', function(d,i) {
+    donutPath.attr('fill', function(d,i) {
             return d.data.color
         })
+        .transition() //Animate the donut chart
+        //For every section of the chart, wait for the previous one to finish first (incrementing delays)
+        .delay(function(d,i) {
+	        return i * 25; }
+        )
+        .duration(25)
+        .attrTween('d', function(d) {
+		    var i = d3.interpolate(d.startAngle, d.endAngle);
+		    return function(t) {
+			    d.endAngle = i(t);
+			    return arc(d)
+			}
+		})
         .on("mouseover", function(d) {
 	        d3.select(this)
                 .transition()
