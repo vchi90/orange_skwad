@@ -26,7 +26,7 @@ function getWords(words,base) {
     //Create a list of objects (because d3 cloud takes in a list of objs)
     keys.forEach(function(key) {
         let size = Math.pow(all[key] / total,.25) * 75; //Scale according to size, "curve" the data so less common words aren't tiny
-        let size1 = Math.pow(all[key] / total,.40) * 100 //Scale for the donut chart
+        let size1 = Math.pow(all[key] / total,1) * 100 //Scale for the donut chart
         let color = i;
 		let pct = "" + ((all[key] / total)*100);
 		pct = pct.substring(0,3).replace(/^\.+|\.+$/g, '') + '%';
